@@ -4,3 +4,7 @@ app = Flask(__name__)
 @app.route('/')
 def hello_world():
     return 'Hello, World!'
+
+@app.route('/api')
+def hello_world():
+    return "You're now in the API!"
