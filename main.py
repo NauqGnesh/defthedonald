@@ -6,5 +6,5 @@ def hello_world():
     return 'Hello, World!'
 
 @app.route('/api')
-def hello_world():
+def api():
     return "You're now in the API!"
