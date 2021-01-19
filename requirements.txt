@@ -5,3 +5,7 @@ itsdangerous==1.1.0
 Jinja2==2.11.2
 MarkupSafe==1.1.1
 Werkzeug==1.0.1
+gpt_2_simple==0.7.1
+tensorflow==1.15
+transformers==4.2.1
+pytorch==1.7.1
