@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, redirect, render_template
 app = Flask(__name__)
 
 @app.route('/')
@@ -8,3 +8,7 @@ def hello_world():
 @app.route('/api')
 def api():
     return "You're now in the API!"
+
+@app.route('/home')
+def homepage():
+    return render_template('hello.html')
