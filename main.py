@@ -1,4 +1,4 @@
-from flask import Flask, redirect, render_template
+from flask import Flask, redirect, render_template, send_from_directory
 import os
 app = Flask(__name__)
 
@@ -7,8 +7,12 @@ root_dir = os.path.dirname(os.getcwd())
 
 @app.route('/')
 def hello_world():
-    # print(os.path.join("~/Code/defthedonald/", 'index.html'))
     return render_template('index.html')
+
+
+@app.route('/static/<path:path>')
+def static_file(path):
+    return send_from_directory('static', path)
 
 
 @app.route('/api')
