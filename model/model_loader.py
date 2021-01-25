@@ -1,4 +1,4 @@
-from transformers import pipeline
+from transformers import pipeline, AutoTokenizer
 # import gpt_2_simple as gpt2
 # import tensorflow as tf
 
@@ -14,9 +14,11 @@ def initialize_model():
 def get_generations():
     global pipe
     if pipe is None:
-        pipe = pipeline('text-generation', model='./model_files/distilgpt2', tokenizer='distilgpt2',
-                        config={'max_length': 800})
-    return pipe('I want')
+        tokenizer = AutoTokenizer.from_pretrained("distilgpt2")
+        pipe = pipeline('text-generation',model="./model_files/distilgpt2_2021-01-25_01-11-55PreSave", framework="pt", tokenizer=tokenizer)
+        # pipe = pipeline('text-generation', model='./model_files/distilgpt2', tokenizer='distilgpt2',
+        #                 config={'max_length': 800})
+    return [pipe('<|startoftext|>')[0]['generated_text'] for i in range(20)]
     # global sess
     # return gpt2.generate(sess,
     #          run_name='run1',
@@ -37,3 +39,5 @@ def get_generations():
     #          top_k=0,
     #          top_p=0.0,
     #          include_prefix=False) # default True)
+
+# President Trump has a new book that is the best. The first book has a very interesting look at the Great New York Times and the Wall Street Journal. His book is called “The New York Times.
