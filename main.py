@@ -1,5 +1,6 @@
 from flask import Flask, redirect, render_template
 import os
+
 app = Flask(__name__)
 
 root_dir = os.path.dirname(os.getcwd())
@@ -22,4 +23,4 @@ def login():
 
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)
