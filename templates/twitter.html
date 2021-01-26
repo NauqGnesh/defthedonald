@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0, maximum-scale=1.0"
+		/>
+		<title>Tweet something</title>
+		<form action="{{ url_for('tweet') }}" method="post">
+			<input type="text" name="twitterStatus" />
+			<input type="submit" value="Post" />
+		</form>
+		<link rel="stylesheet" href="styles.css" />
+	</head>
+	<body></body>
+</html>

@@ -1,5 +1,6 @@
-from flask import Flask, redirect, render_template, send_from_directory
+from flask import Flask, redirect, render_template, send_from_directory, request
 import os
+import twitter.api
 
 app = Flask(__name__)
 
@@ -25,6 +26,12 @@ def api():
 def login():
     return "You can't log in because you're not worthy"
 
+@app.route('/tweet', methods=['GET', 'POST'])
+def tweet():
+    if request.method == 'POST':
+        tweet_text = request.form['twitterStatus']
+        twitter.api.post_tweets(tweet_text)
+    return render_template('twitter.html') 
 
 if __name__ == "__main__":
     app.run(debug=True)
