@@ -11,14 +11,18 @@ def initialize_model():
     # gpt2.load_gpt2(sess, run_name='run1', checkpoint_dir='model_files')
     pass
 
-def get_generations():
+def get_generations(model_folder, num_samples):
     global pipe
     if pipe is None:
         tokenizer = AutoTokenizer.from_pretrained("distilgpt2")
-        pipe = pipeline('text-generation',model="./model_files/distilgpt2_2021-01-25_01-11-55PreSave", framework="pt", tokenizer=tokenizer)
+        pipe = pipeline('text-generation',model=model_folder, framework="pt", tokenizer=tokenizer)
         # pipe = pipeline('text-generation', model='./model_files/distilgpt2', tokenizer='distilgpt2',
         #                 config={'max_length': 800})
-    return [pipe('<|startoftext|>')[0]['generated_text'] for i in range(20)]
+    start_token = '<|startoftext|>'
+    end_token = '<|endoftext|>'
+    results = pipe([start_token]*num_samples)
+    # print(results)
+    return [result[0]['generated_text'].replace(start_token, '').replace(end_token, '') for result in results]
     # global sess
     # return gpt2.generate(sess,
     #          run_name='run1',
