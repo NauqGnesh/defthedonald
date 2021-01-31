@@ -5,10 +5,12 @@ app = Flask(__name__)
 
 root_dir = os.path.dirname(os.getcwd())
 
+tweets = {"tweet1", "tweet2"}
+
 
 @app.route('/')
 def hello_world():
-    return render_template('index.html')
+    return render_template('index.html', tweets=tweets)
 
 
 @app.route('/static/<path:path>')
