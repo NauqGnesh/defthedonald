@@ -1,8 +1,4 @@
 function getTweets() {
-  console.log("Hi");
+  console.log("Hii");
   return true;
-}
-
-document.querySelector('html').onclick = function() {
-    alert('Ouch! Stop poking me!');
 }
