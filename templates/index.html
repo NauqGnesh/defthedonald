@@ -13,40 +13,23 @@
 <body>
 
 <h1><center>Def The Donald Bot</center></h1>
-<h1><center>Trump Image here</center></h1>
+<img src="/static/twitter-photo.jpg" alt="twitter-photo" width="200" height="300" class="center">
 
 <div class="container">
     <a href="#" class="btn btn-info" onclick="getTweets()"><span class="oi oi-plus"></span>Get Tweets</a>
-
-    <div class="col-2">
-
-    </div>
-    <div class="col-8">
-        <div class="card mb-3" style="width: 100%;">
-            <div class="card-body">
-                <!--     <h5 class="card-title">Card title</h5> -->
-                <p class="card-text">No matter what you do for the Do Nothing Democrats no matter how GREAT a job you are doing they will only respond to their Fake partners in the Lamestream Media in the negative even in a time of crisis</p>
-                <a href="#" class="btn btn-primary"><span class="oi oi-plus"></span> Tweet This</a>
-            </div>
-        </div>
-
-        <div class="container">
-            <div class="col-5">
-                <button type="button" class="btn btn-primary">{{tweets[1]}}</button>
-            </div>
-            <div class="offset-2"></div>
-        </div>
         <ol>
 <!-- For loop logic of jinja template -->
-{%for i in range(0, 10)%}
+{%for tweet in tweets%}
 
     <li>
         <div class="card mb-3" style="width: 100%;">
             <div class="card-body">
-                <!--     <h5 class="card-title">Card title</h5> -->
-                <p class="card-text">America is very far from great. I will only do the greatness. Nothing but the greatness. You will get tired of so much greatness.</p>
-                <a href="#" class="btn btn-primary">Tweet This</a>
-                <button type="button" class="btn btn-primary">Edit tweet!</button>
+                <!--     <h5 class="card-title">No matter what you do for the Do Nothing Democrats no matter how GREAT a job
+                    you are doing they will only respond to their Fake partners in the Lamestream Media in the
+                    negative even in a time of crisis</h5> -->
+                <p class="card-text" contenteditable>{{ tweet }}America is very far from great. I will only do the greatness. Nothing but the greatness. You will get tired of so much greatness.</p>
+                <a href="#" class="tweetbtn btn btn-primary">Tweet This</a>
+<!--                <button type="button" class="btn btn-primary">Edit tweet!</button>-->
             </div>
         </div>
     </li>

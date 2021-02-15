@@ -291,4 +291,9 @@ fabric.properties
 .idea
 *.iml
 out
+<<<<<<< HEAD
 gen
+=======
+gen
+model/model_files/
+>>>>>>> web_stuff
