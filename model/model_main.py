@@ -5,7 +5,7 @@ model_app = Flask(__name__)
 
 @model_app.route('/')
 def index():
-    num_samples = 5
+    num_samples = 2
     models_folder =  Model.get_path() + "/"
     model_name = "10epochs2013-2020"
     # model_name = "3_epochs_distilgpt2_2021-01-25_01-11"
