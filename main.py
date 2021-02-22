@@ -70,7 +70,10 @@ def post_tweet(tweet):
     twitter.api.post_tweets(tweet)
     return redirect(url_for('hello_world', tweets=tweets))
 
-
+@app.route("/get_tweets/", methods=["POST"])
+def get_tweets():
+    tweets = generate_tweets()
+    return redirect(url_for('hello_world', tweets=tweets))
 
 if __name__ == "__main__":
     app.run(debug=True)
