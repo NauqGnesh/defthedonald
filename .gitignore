@@ -289,3 +289,6 @@ fabric.properties
 *.iml
 out
 gen
+
+### Leave out the model files
+tmp/

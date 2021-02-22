@@ -1,11 +1,12 @@
 from flask import Flask, redirect, render_template, send_from_directory
-import os
+from utils import Model, APP_ROOT
 
 app = Flask(__name__)
 
-root_dir = os.path.dirname(os.getcwd())
-
 tweets = {"tweet1", "tweet2"}
+
+# Fetch model (synchronously for now)
+Model.fetch()
 
 
 @app.route('/')
