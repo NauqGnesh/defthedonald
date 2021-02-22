@@ -13,6 +13,9 @@ tweets = {"tweet1", "tweet2"}
 # Fetch model (synchronously for now)
 Model.fetch()
 
+# Log about model storage location
+print("Model ostensibly stored at " + Model.get_path())
+
 # Set configs
 consumer_key = os.environ.get("CONSUMER_KEY")
 consumer_secret = os.environ.get("CONSUMER_SECRET")
