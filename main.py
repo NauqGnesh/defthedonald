@@ -1,5 +1,9 @@
-from flask import Flask, redirect, render_template, send_from_directory
-from utils import Model, APP_ROOT
+from flask import Flask, redirect, render_template, send_from_directory, request, url_for
+from utils import Model
+import os
+import twitter.api
+
+import tweepy
 
 app = Flask(__name__)
 
@@ -7,6 +11,35 @@ tweets = {"tweet1", "tweet2"}
 
 # Fetch model (synchronously for now)
 Model.fetch()
+
+# Set configs
+consumer_key = os.environ.get("CONSUMER_KEY")
+consumer_secret = os.environ.get("CONSUMER_SECRET")
+access_token= os.environ.get("ACCESS_TOKEN")
+access_token_secret = os.environ.get("ACCESS_TOKEN_SECRET")
+
+auth=tweepy.OAuthHandler(consumer_key,consumer_secret)
+auth.set_access_token(access_token,access_token_secret)
+api=tweepy.API(auth)
+
+try:
+    api.verify_credentials()
+    print("Authentication OKKk")
+except:
+    print("Error during authentication")
+
+
+def post_tweets(tweet_text: str):
+    """Post a tweet to twitter
+
+    Args:
+        tweet_text : str
+            Tweet to be posted
+
+    Returns:
+        Error if POST requests fails
+    """
+    api.update_status(tweet_text)
 
 
 @app.route('/')
@@ -27,6 +60,15 @@ def api():
 @app.route('/login')
 def login():
     return "You can't log in because you're not worthy"
+
+
+@app.route("/post_tweet/<tweet>", methods=["GET"])
+def post_tweet(tweet):
+    if request.method == 'GET':
+        """return the information for <tweet>"""
+    twitter.api.post_tweets(tweet)
+    return redirect(url_for('hello_world', tweets=tweets))
+
 
 
 if __name__ == "__main__":
