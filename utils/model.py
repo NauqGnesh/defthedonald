@@ -27,7 +27,7 @@ class Model:
 	@classmethod
 	def get_path(cls) -> Optional[str]:
 		if cls.is_fetched:
-			return cls.DESTINATION_PATH + cls.DIRECTORY_IN_BUCKET
+			return os.getcwd() + cls.DESTINATION_PATH + cls.DIRECTORY_IN_BUCKET
 		elif not cls.has_begun_fetch:
 			cls.fetch()
 		return None
