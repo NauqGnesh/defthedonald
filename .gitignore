@@ -291,9 +291,11 @@ fabric.properties
 .idea
 *.iml
 out
-<<<<<<< HEAD
+
 gen
-=======
-gen
+
+### Leave out the model files
+tmp/
+
+### Model info
 model/model_files/
->>>>>>> web_stuff

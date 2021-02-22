@@ -1,16 +1,18 @@
 from flask import Flask, redirect, render_template, send_from_directory, request, url_for
+from utils import Model
 import os
 import twitter.api
 
 import tweepy
 
-
 app = Flask(__name__)
-
-root_dir = os.path.dirname(os.getcwd())
 
 tweets = {"tweet1", "tweet2"}
 
+# Fetch model (synchronously for now)
+Model.fetch()
+
+# Set configs
 consumer_key = os.environ.get("CONSUMER_KEY")
 consumer_secret = os.environ.get("CONSUMER_SECRET")
 access_token= os.environ.get("ACCESS_TOKEN")
