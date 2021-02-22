@@ -1,7 +1,14 @@
 function getTweets() {
-  console.log("Hii");
-  return true;
+      let httpRequest = new XMLHttpRequest();
+    if (!httpRequest) {
+      alert('Giving up :( Cannot create an XMLHTTP instance');
+      return false;
+    }
+    //httpRequest.onreadystatechange = alertContents;
+    httpRequest.open('POST', '/get_tweets/');
+    httpRequest.send();
 }
+
 function tweet(text) {
     let httpRequest = new XMLHttpRequest();
     if (!httpRequest) {
